@@ -1,6 +1,6 @@
 /* main.c
  * Author:  Klas löfstedt 
- * Created: ‎16 ‎sep ‎2014, ‏‎00:19:31
+ * Created: ‎16 ‎sep ‎2014, ‏‎00:19
  * Webpage: klaslofstedt.se
  * Description: This program reads ZigBee packages from an Xbee router
  *              connected to USART0. Status LED are conencted to PD7.
