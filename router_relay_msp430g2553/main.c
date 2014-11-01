@@ -1,5 +1,14 @@
-// make all
-// MSP430Flasher.exe -n msp430g2xx3 -w "main.hex" -v -z [VCC] -m SBW2 -std=c99
+/* make all
+ * MSP430Flasher.exe -n msp430g2xx3 -w "main.hex" -v -z [VCC] -m SBW2 -std=c99
+ * main.c
+ * Author:  Klas löfstedt 
+ * Created: ‎31 ‎oct ‎2014, ‏‎14:25
+ * Webpage: klaslofstedt.se
+ * Description: This program reads ZigBee packages from an Xbee router
+ *              connected to UART. P1.5 controls the relay and a status
+ *				led is connected to P1.0.
+ *              The program is written for an MSP430g2553.           
+ */ 
 #include <msp430g2553.h>
 #include <stdint.h>
 //----------------------------------------------------------------------------//
@@ -12,10 +21,10 @@ volatile uint8_t g_xbee_data;
 enum XbeeDataStatus { IDLE, READING, READY };
 volatile enum XbeeDataStatus g_xbee_status = IDLE;
 //----------------------------------------------------------------------------//
-void led_init()
+void pin_init()
 {
-	P1DIR = (BIT0 | BIT6 | BIT5 | BIT4);
-	P1OUT =~ (BIT0 | BIT6 | BIT5 | BIT4);
+	P1DIR = (BIT0 | BIT5);
+	P1OUT =~ (BIT0 | BIT5);
 }
 //----------------------------------------------------------------------------//
 void freq_init()
@@ -84,7 +93,7 @@ int main(void)
 {
 	WDTCTL = WDTPW | WDTHOLD;		// Stop watchdog timer
 	freq_init();
-	led_init();
+	pin_init();
 	uart_init();
 	
 	for(;;) 
@@ -97,3 +106,4 @@ int main(void)
 		}
 	}
 }
+//----------------------------------------------------------------------------//
