@@ -1,11 +1,11 @@
 /* main.c
  * Author:  Klas löfstedt 
- * Created: ‎10 ‎sep ‎2014, ‏‎21:19:23
+ * Created: ‎10 ‎sep ‎2014, ‏‎21:19
  * Webpage: klaslofstedt.se
  * Description: This program reads ZigBee packages from an Raspberry Pi
  *              connected to USART0, and transmits them to an Xbee coordinator
  *              connected to USART1. Status LEDs are conencted to PC0 and PC1.
- *              The program is written for an ATmega162.           
+ *              The program is written for an ATmega162.        
  */ 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -129,7 +129,6 @@ int main(void)
                 g_raspberry_status = IDLE;
                 PORTC ^= (1 << PC0);
 			}
-			
 		}
 	}
 }
