@@ -45,7 +45,6 @@ void uart_init()
     UCA0MCTL = UCBRS0;                        // Modulation UCBRSx = 1 
     UCA0CTL1 &= ~UCSWRST; 
     IE2 |= UCA0RXIE;						//Enable USCI_A0 RX interrupt
-    __enable_interrupt();
 }
 //----------------------------------------------------------------------------// 
 #pragma vector=USCIAB0RX_VECTOR
@@ -95,7 +94,7 @@ int main(void)
 	freq_init();
 	pin_init();
 	uart_init();
-	
+	__enable_interrupt();
 	for(;;) 
 	{
 		if(g_xbee_status == READY){
